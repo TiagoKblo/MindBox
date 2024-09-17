@@ -6,11 +6,9 @@ class DatabaseHelper {
   factory DatabaseHelper() => _instance;
   DatabaseHelper._internal();
 
-  static Database? _database;
-
+  Database? _database;
   Future<Database> get database async {
-    if (_database != null) return _database!;
-    _database = await _initDatabase();
+    _database ??= await _initDatabase();
     return _database!;
   }
 
@@ -19,33 +17,69 @@ class DatabaseHelper {
       join(await getDatabasesPath(), 'books_database.db'),
       onCreate: (db, version) {
         return db.execute(
-          "CREATE TABLE books(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, authors TEXT, thumbnail TEXT)",
+          "CREATE TABLE books(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, authors TEXT, thumbnail TEXT, \"order\" INTEGER)",
         );
       },
-      version: 1,
+      onUpgrade: (db, oldVersion, newVersion) async {
+        if (oldVersion < 2) {
+          await db.execute('ALTER TABLE books ADD COLUMN "order" INTEGER');
+        }
+      },
+      version: 2,
     );
   }
 
   Future<void> insertBook(Map<String, dynamic> book) async {
     final db = await database;
-    await db.insert(
-      'books',
-      book,
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
+    try {
+      await db.insert(
+        'books',
+        book,
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+    } catch (e) {
+      print('Erro ao inserir livro: $e');
+    }
   }
 
   Future<void> deleteBook(int id) async {
     final db = await database;
-    await db.delete(
-      'books',
-      where: 'id = ?',
-      whereArgs: [id],
-    );
+    try {
+      await db.delete(
+        'books',
+        where: 'id = ?',
+        whereArgs: [id],
+      );
+    } catch (e) {
+      print('Erro ao deletar livro: $e');
+    }
+  }
+
+  Future<void> updateBookOrder(List<Map<String, dynamic>> books) async {
+    final db = await database;
+    try {
+      for (var i = 0; i < books.length; i++) {
+        await db.update(
+          'books',
+          {'order': i},
+          where: 'id = ?',
+          whereArgs: [books[i]['id']],
+        );
+      }
+    } catch (e) {
+      print('Erro ao atualizar a ordem dos livros: $e');
+    }
   }
 
   Future<List<Map<String, dynamic>>> getBooks() async {
     final db = await database;
-    return await db.query('books');
+    try {
+      final List<Map<String, dynamic>> result = await db.query('books', orderBy: '"order" ASC');
+      print('Livros retornados: $result'); // Log para depuração
+      return result;
+    } catch (e) {
+      print('Erro ao obter livros: $e');
+      return [];
+    }
   }
 }

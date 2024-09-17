@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'bookDetailPage.dart'; // Certifique-se de que o caminho está correto
+import 'bookDetailPage.dart';
 
 class BookSearchPage extends StatefulWidget {
   const BookSearchPage({super.key});
@@ -58,7 +58,9 @@ class _BookSearchPageState extends State<BookSearchPage> {
             ),
           ),
           Expanded(
-            child: ListView.builder(
+            child: books.isEmpty
+                ? Center(child: Text('Nenhum livro encontrado'))
+                : ListView.builder(
               itemCount: books.length,
               itemBuilder: (context, index) {
                 final book = books[index]['volumeInfo'];

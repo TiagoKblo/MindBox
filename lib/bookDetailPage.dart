@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'databasehelper.dart'; // Certifique-se de que o caminho está correto
+import 'databaseHelper.dart';
 
 class BookDetailPage extends StatelessWidget {
   final String title;
