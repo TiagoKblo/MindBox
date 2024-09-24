@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+<<<<<<< HEAD
       title: 'MindBox',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
@@ -37,6 +38,16 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const MyHomePage(title: 'MindBox'),
+=======
+      title: 'Pesquisa de Livros',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const MyHomePage(title: 'Tela Inicial'),
+>>>>>>> 32b33475b7bc458f64500ab69a59eb7e6a414408
         '/book-search': (context) => const BookSearchPage(),
         '/wish-list': (context) => const WishListPage(),
       },

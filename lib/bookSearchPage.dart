@@ -38,7 +38,10 @@ class _BookSearchPageState extends State<BookSearchPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+<<<<<<< HEAD
         backgroundColor: Color(0xFF003F5C),
+=======
+>>>>>>> 32b33475b7bc458f64500ab69a59eb7e6a414408
         title: const Text('Pesquisar Livros'),
       ),
       body: Column(
@@ -60,7 +63,11 @@ class _BookSearchPageState extends State<BookSearchPage> {
           ),
           Expanded(
             child: books.isEmpty
+<<<<<<< HEAD
                 ? Center(child: Text('Nenhum livro encontrado', style: TextStyle(color: Colors.blueGrey)))
+=======
+                ? Center(child: Text('Nenhum livro encontrado'))
+>>>>>>> 32b33475b7bc458f64500ab69a59eb7e6a414408
                 : ListView.builder(
               itemCount: books.length,
               itemBuilder: (context, index) {
@@ -71,8 +78,13 @@ class _BookSearchPageState extends State<BookSearchPage> {
                 final String thumbnail = book['imageLinks']?['thumbnail'] ?? '';
 
                 return ListTile(
+<<<<<<< HEAD
                   title: Text(title, style: TextStyle(color: Colors.blueGrey)),
                   subtitle: Text(authors, style: TextStyle(color: Colors.blueGrey[600])),
+=======
+                  title: Text(title),
+                  subtitle: Text(authors),
+>>>>>>> 32b33475b7bc458f64500ab69a59eb7e6a414408
                   leading: thumbnail.isNotEmpty
                       ? Image.network(
                     thumbnail,
