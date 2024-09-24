@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'aboutPage.dart'; // Importar a página Sobre
-=======
->>>>>>> 32b33475b7bc458f64500ab69a59eb7e6a414408
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key, required this.title});
@@ -11,7 +8,6 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
     final Size screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -90,31 +86,6 @@ class MyHomePage extends StatelessWidget {
               ),
             ],
           ),
-=======
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/book-search');
-              },
-              child: const Text('Pesquisar Livros'),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/wish-list');
-              },
-              child: const Text('Ver Lista de Desejos'),
-            ),
-          ],
->>>>>>> 32b33475b7bc458f64500ab69a59eb7e6a414408
         ),
       ),
     );

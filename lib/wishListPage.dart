@@ -58,10 +58,7 @@ class _WishListPageState extends State<WishListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-<<<<<<< HEAD
-        backgroundColor: Color(0xFF003F5C),
-=======
->>>>>>> 32b33475b7bc458f64500ab69a59eb7e6a414408
+        backgroundColor: const Color(0xFF003F5C),
         title: const Text('Lista de Desejos'),
       ),
       body: ReorderableListView(
@@ -89,13 +86,8 @@ class _WishListPageState extends State<WishListPage> {
 
           return ListTile(
             key: ValueKey(id), // Adicione uma chave única para cada item
-<<<<<<< HEAD
-            title: Text(title, style: TextStyle(color: Colors.blueGrey)),
-            subtitle: Text(authors, style: TextStyle(color: Colors.blueGrey[600])),
-=======
             title: Text(title),
             subtitle: Text(authors),
->>>>>>> 32b33475b7bc458f64500ab69a59eb7e6a414408
             leading: thumbnail.isNotEmpty
                 ? Image.network(
               thumbnail,
@@ -118,8 +110,4 @@ class _WishListPageState extends State<WishListPage> {
       ),
     );
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 32b33475b7bc458f64500ab69a59eb7e6a414408

@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'databaseHelper.dart'; // Certifique-se de que o caminho está correto
-=======
-import 'databaseHelper.dart';
->>>>>>> 32b33475b7bc458f64500ab69a59eb7e6a414408
 
 class BookDetailPage extends StatelessWidget {
   final String title;
@@ -31,10 +27,7 @@ class BookDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-<<<<<<< HEAD
-        backgroundColor: Color(0xFF003F5C),
-=======
->>>>>>> 32b33475b7bc458f64500ab69a59eb7e6a414408
+        backgroundColor: Color(0xFF003F5C), // Mantenha a cor azul escura
         title: Text(title),
       ),
       body: SingleChildScrollView(
@@ -54,35 +47,20 @@ class BookDetailPage extends StatelessWidget {
             const SizedBox(height: 16),
             Text(
               'Título: $title',
-<<<<<<< HEAD
               style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.blueGrey),
-=======
-              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
->>>>>>> 32b33475b7bc458f64500ab69a59eb7e6a414408
             ),
             const SizedBox(height: 8),
             Text(
               'Autor(es): $authors',
-<<<<<<< HEAD
               style: const TextStyle(fontSize: 18, color: Colors.blueGrey),
-=======
-              style: const TextStyle(fontSize: 18),
->>>>>>> 32b33475b7bc458f64500ab69a59eb7e6a414408
             ),
             const SizedBox(height: 16),
             const Text(
               'Descrição:',
-<<<<<<< HEAD
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.blueGrey),
             ),
             const SizedBox(height: 8),
             Text(description, style: TextStyle(color: Colors.blueGrey[700])),
-=======
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8),
-            Text(description),
->>>>>>> 32b33475b7bc458f64500ab69a59eb7e6a414408
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
@@ -91,12 +69,9 @@ class BookDetailPage extends StatelessWidget {
                   const SnackBar(content: Text('Livro adicionado à lista de desejos!')),
                 );
               },
-<<<<<<< HEAD
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF003F5C),
+                backgroundColor: Color(0xFF003F5C), // Cor do botão
               ),
-=======
->>>>>>> 32b33475b7bc458f64500ab69a59eb7e6a414408
               child: const Text('Adicionar à Lista de Desejos'),
             ),
           ],
