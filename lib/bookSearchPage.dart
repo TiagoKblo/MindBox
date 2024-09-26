@@ -13,6 +13,7 @@ class BookSearchPage extends StatefulWidget {
 class _BookSearchPageState extends State<BookSearchPage> {
   final TextEditingController _controller = TextEditingController();
   List books = [];
+  Set<String> favoriteBooks = Set<String>(); // Conjunto para armazenar IDs dos livros favoritos
 
   Future<void> _searchBooks(String query) async {
     final url = 'https://www.googleapis.com/books/v1/volumes?q=$query';
@@ -32,6 +33,16 @@ class _BookSearchPageState extends State<BookSearchPage> {
     } catch (e) {
       print('Exceção ao buscar livros: $e');
     }
+  }
+
+  void _toggleFavorite(String bookId) {
+    setState(() {
+      if (favoriteBooks.contains(bookId)) {
+        favoriteBooks.remove(bookId);
+      } else {
+        favoriteBooks.add(bookId);
+      }
+    });
   }
 
   @override
@@ -65,10 +76,13 @@ class _BookSearchPageState extends State<BookSearchPage> {
               itemCount: books.length,
               itemBuilder: (context, index) {
                 final book = books[index]['volumeInfo'];
+                final String bookId = books[index]['id'];
                 final String title = book['title'] ?? 'Título desconhecido';
                 final String authors = book['authors']?.join(', ') ?? 'Autor desconhecido';
                 final String description = book['description'] ?? 'Sem descrição disponível';
                 final String thumbnail = book['imageLinks']?['thumbnail'] ?? '';
+
+                final bool isFavorite = favoriteBooks.contains(bookId);
 
                 return ListTile(
                   title: Text(title, style: TextStyle(color: Colors.blueGrey)),
@@ -84,6 +98,15 @@ class _BookSearchPageState extends State<BookSearchPage> {
                     },
                   )
                       : const Icon(Icons.image_not_supported),
+                  trailing: IconButton(
+                    icon: Icon(
+                      isFavorite ? Icons.favorite : Icons.favorite_border,
+                      color: isFavorite ? Colors.red : Colors.grey,
+                    ),
+                    onPressed: () {
+                      _toggleFavorite(bookId);
+                    },
+                  ),
                   onTap: () {
                     Navigator.push(
                       context,
