@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'aboutPage.dart'; // Importar a página Sobre
+import '../pages/aboutPage.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key, required this.title});
@@ -22,14 +22,14 @@ class MyHomePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              // Logo ou Imagem de Cabeçalho
+
               ClipOval(
                 child: SizedBox(
-                  width: screenSize.width * 0.6, // Largura da imagem
-                  height: screenSize.width * 0.6, // Altura da imagem
+                  width: screenSize.width * 0.6,
+                  height: screenSize.width * 0.6,
                   child: Image.asset(
-                    'assets/images/logo4.jpeg', // Caminho do logotipo
-                    fit: BoxFit.cover, // Ajusta a imagem
+                    'assets/images/logo4.jpeg',
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),

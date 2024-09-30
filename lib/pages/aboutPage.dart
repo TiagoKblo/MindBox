@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart'; // Importar o url_launcher
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
 
-  // Função para abrir o link no navegador
   Future<void> _launchGitHub() async {
-    const url = 'https://github.com/seu-usuario/seu-repositorio'; // Substitua pelo link real do GitHub
-    if (await canLaunch(url)) {
-      await launch(url);
+    final Uri url = Uri.parse('https://github.com/TiagoKblo/MindBox');
+
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
     } else {
       throw 'Não foi possível abrir o link: $url';
     }
@@ -18,7 +18,7 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF003F5C), // Azul petróleo escuro
+        backgroundColor: const Color(0xFF003F5C),
         title: const Text('Sobre MindBox'),
         centerTitle: true,
       ),
@@ -108,7 +108,7 @@ class AboutPage extends StatelessWidget {
             GestureDetector(
               onTap: _launchGitHub,
               child: const Text(
-                'https://github.com/seu-usuario/seu-repositorio', // Substitua pelo link real do GitHub
+                'https://github.com/TiagoKblo/MindBox',
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.blue,

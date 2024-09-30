@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'databaseHelper.dart';
+import '../repositories/databaseHelper.dart';
 
 class WishListPage extends StatefulWidget {
   const WishListPage({super.key});
